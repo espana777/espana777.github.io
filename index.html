@@ -5,49 +5,14 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
-    <title>Santa Biblia</title>
+    <title>Document</title>
 </head>
 <body>
-    <div class="container">
-        <div class="heading">Santa Biblia Modificado</div>
-        <div class="video-container">
-            <div class="video">
-                <video src="video1.mp4" muted></video>
-            </div>
-
-            <div class="video">
-                <video src="video1.mp4" muted></video>
-            </div>
-
-            <div class="video">
-                <video src="video1.mp4" muted></video>
-            </div>
-
-            <div class="video">
-                <video src="video1.mp4" muted></video>
-            </div>
-
-            <div class="video">
-                <video src="video1.mp4" muted></video>
-            </div>
-
-            <div class="video">
-                <video src="video1.mp4" muted></video>
-            </div>
-        </div>
-    </div>
-  
-    <script>
-        var video = document.querySelectorAll('video');
-
-        video.forEach(play => play.addEventListener('click', () =>{
-            play.classList.toggle('active');
-            if (play.paused){
-                play.play();
-            }else
-            play.pause();
-            play.currentTime = 0;
-        }))
-    </script>
+    
+    <marquee behavior="alternate" direction="" scrollamount="1">
+        <marquee behavior="alternate" direction="down" scrollamount="1">
+            <img src="luna.jpg" alt="">
+        </marquee>
+    </marquee>
 </body>
 </html>
