@@ -1,0 +1,81 @@
+*
+{
+    margin: 0;
+    padding: 0;
+    width: 100%;
+}
+
+body{
+    background: black;
+}
+
+video{
+    position: absolute;
+    top: 38%;
+    transform: translateY(-50%);
+}
+
+.text{
+    width: 100%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    display: flex;
+}
+
+.text span{
+    text-align: center;
+    font-weight: 800;
+    font-size: 70px;
+    color: whitesmoke;
+    transition: 1s;
+    -webkit-transition: 1s;
+    -moz-transition: 1s;
+    animation: reveal 2.5s linear forwards;
+    opacity: 0;
+    filter: blur(13px);
+}
+
+@keyframes reveal{
+    100%{
+        opacity: 1;
+        filter: blur(0);
+    }
+}
+
+span:nth-child(1){
+    animation-delay: 0.7s;
+    -webkit-animation-delay: 0.7s;
+    -moz-animation-delay: 0.7s;
+}
+
+span:nth-child(2){
+    animation-delay: 1.4s;
+    -webkit-animation-delay: 1.4s;
+    -moz-animation-delay: 1.4s;
+}
+
+span:nth-child(3){
+    animation-delay: 2.1s;
+    -webkit-animation-delay: 2.1s;
+    -moz-animation-delay: 2.1s;
+}
+
+span:nth-child(4){
+    animation-delay: 2.8s;
+    -webkit-animation-delay: 2.8s;
+    -moz-animation-delay: 2.8s;
+}
+
+span:nth-child(5){
+    animation-delay: 3.5s;
+    -webkit-animation-delay: 3.5s;
+    -moz-animation-delay: 3.5s;
+}
+
+span:nth-child(6){
+    animation-delay: 4.2s;
+    -webkit-animation-delay: 4.2s;
+    -moz-animation-delay: 4.2s;
+}

@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="es" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Santa Biblia</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css">
+  </head>
+  <body>
+
+    <header>
+      <a href="index.html" class="brand">Santa Biblia</a>
+      <div class="menu-btn"></div>
+      <div class="navigation">
+        <div class="navigation-items">
+          <a href="#home">Génesis</a>
+          <a href="#luz">La luz del Mundo</a>
+          <a href="#padrenuestro">Padre Nuestro(ARAMEO)</a>
+          <a href="#">Galería</a>
+          <a href="#">Padre</a>
+        </div>
+      </div>
+    </header>
+
+    <section class="home" id="home">
+      <video class="video-slide active" src="videos/genesis1.1.mp4" autoplay muted loop></video>
+      <video class="video-slide" src="videos/genesis1.2.mp4" autoplay muted loop></video>
+      <video class="video-slide" src="videos/genesis1.3.mp4" autoplay muted loop></video>
+      <video class="video-slide" src="videos/genesis1.4.mp4" autoplay muted loop></video>
+      <video class="video-slide" src="videos/genesis1.5.mp4" autoplay muted loop></video>
+      <div class="content active">
+        <h1>Genésis.<br><span>1:1</span></h1>
+        <p>EN el principio crió Dios los cielos y la tierra.</p>
+        <a href="genesis.html">Leer más</a>
+      </div>
+      <div class="content">
+        <h1>Genésis.<br><span>1:2</span></h1>
+        <p>Y la tierra estaba desordenada y vacía, y las tinieblas estaban sobre la haz del abismo, y el Espíritu de Dios se movía sobre la haz de las aguas.</p>
+        <a href="#">Leer más</a>
+      </div>
+      <div class="content">
+        <h1>Génesis.<br><span>1:3</span></h1>
+        <p>Y dijo Dios: Sea la luz: y fué la luz.</p>
+        <a href="#">Leer más</a>
+      </div>
+      <div class="content">
+        <h1>Génesis.<br><span>1:4</span></h1>
+        <p>Y vió Dios que la luz era buena: y apartó Dios la luz de las tinieblas.</p>
+        <a href="#">Leer más</a>
+      </div>
+      <div class="content">
+        <h1>Génesis<br><span>1:5</span></h1>
+        <p>Y llamó Dios á la luz Día, y á las tinieblas llamó Noche: y fué la tarde y la mañana un día.</p>
+        <a href="#">Leer más</a>
+      </div>
+      <!-- <div class="media-icons">
+        <a href="#"><i class="fab fa-facebook-f"></i></a>
+        <a href="#"><i class="fab fa-instagram"></i></a>
+        <a href="#"><i class="fab fa-twitter"></i></a>
+      </div> -->
+      <div class="slider-navigation">
+        <div class="nav-btn active"></div>
+        <div class="nav-btn"></div>
+        <div class="nav-btn"></div>
+        <div class="nav-btn"></div>
+        <div class="nav-btn"></div>
+      </div>
+    </section>
+
+    <section class="home" id="luz">
+
+       <img src="imagenes/camino.jpg" alt="imagen">
+    
+        <div class="content active">
+            <h2>Jesús le dijo: Yo soy el camino, y la verdad, y la vida; nadie viene al Padre, sino por mí.</h2>
+            <a href="luz.html">Leer más</a>
+          </div>
+      </section>
+
+      <section class="home" id="padrenuestro">
+
+          <img src="imagenes/bibliaarameo.jpg" alt="imagen">
+
+        <div class="content active">
+          <h2>Padre Nuestro en ARAMEO</h2>
+          <a href="arameo.html">Leer más</a>
+          </div>
+       
+        </div>
+     
+      </section>
+  
+
+    <script type="text/javascript">
+    //Javacript for responsive navigation menu
+    const menuBtn = document.querySelector(".menu-btn");
+    const navigation = document.querySelector(".navigation");
+
+    menuBtn.addEventListener("click", () => {
+      menuBtn.classList.toggle("active");
+      navigation.classList.toggle("active");
+    });
+
+    //Javacript for video slider navigation
+    const btns = document.querySelectorAll(".nav-btn");
+    const slides = document.querySelectorAll(".video-slide");
+    const contents = document.querySelectorAll(".content");
+
+    var sliderNav = function(manual){
+      btns.forEach((btn) => {
+        btn.classList.remove("active");
+      });
+
+      slides.forEach((slide) => {
+        slide.classList.remove("active");
+      });
+
+      contents.forEach((content) => {
+        content.classList.remove("active");
+      });
+
+      btns[manual].classList.add("active");
+      slides[manual].classList.add("active");
+      contents[manual].classList.add("active");
+    }
+
+    btns.forEach((btn, i) => {
+      btn.addEventListener("click", () => {
+        sliderNav(i);
+      });
+    });
+    </script>
+
+  </body>
+</html>
+      
