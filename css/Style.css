@@ -207,7 +207,7 @@ main .site-title .btn:hover{
 /* --------------- Blog Carousel ------------ */
 
 main .blog{
-    background: url('../assets/Abract01.png');
+    background: url('https://images.pexels.com/photos/9589500/pexels-photo-9589500.jpeg?auto=compress&cs=tinysrgb&w=600');
     background-repeat: no-repeat;
     background-position: right;
     height: 100vh;
