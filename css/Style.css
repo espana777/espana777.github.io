@@ -174,7 +174,7 @@ p{
 
 /* --------------- Site title ---------------- */
 main .site-title{
-    background: url('../assets/Background-image.png');
+    background: url('https://images.pexels.com/photos/12739048/pexels-photo-12739048.jpeg?auto=compress&cs=tinysrgb&w=600');
     background-size: cover;
     height: 110vh;
     display: flex;
