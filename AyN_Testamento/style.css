@@ -1,0 +1,144 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    width: 100%;
+    height: 100vh;
+    background-color: #353535;
+}
+
+.container{
+    position: fixed;
+    height: 100%;
+    z-index: 2;
+    overflow: hidden;
+    padding-left: 5vw;
+    display: flex;
+    align-items: center;
+    transition: transform 1s, clip-path 1s;
+    cursor: pointer;
+    clip-path: circle(100% at 40% 50%);
+}
+
+.container:nth-child(1){
+    background-color: rgb(196, 10, 39);
+}
+
+.container:nth-child(2){
+    background-color: rgb(212, 74, 57);
+}
+
+.container.circle:nth-child(1){
+    z-index: 1;
+    clip-path: circle(12% at 40% 50%);
+}
+
+.container.circle:nth-child(2){
+    z-index: 1;
+    clip-path: circle(12% at 60% 50%);
+}
+
+.model-img{
+    position: absolute;
+    height: 100vh;
+    transition: 1s;
+}
+
+.model-img.circle{
+    top: 50%;
+    transform: translate(-50%, -50%) scale(.45);
+}
+
+.container:nth-child(1) .model-img.circle{
+    left: 40%;
+}
+
+.container:nth-child(2) .model-img.circle{
+    left: 60%;
+}
+
+.content{
+    position: relative;
+    z-index: 2;
+    color: #fff;
+    font-family: 'roboto', sans-serif;
+    transition: 1s;
+}
+
+.content.circle{
+    opacity: 0;
+}
+
+.heading{
+    font-size: 120px;
+    text-transform: uppercase;
+    line-height: 100px;
+}
+
+.heading span{
+    font-size: 50px;
+    line-height: 50px;
+}
+
+.separator{
+    width: 25%;
+    margin: 40px 0 ;
+    border-color: #fff;
+}
+
+.para{
+    font-size: 16px;
+    width: 60%;
+    font-weight: 400;
+}
+
+.btn{
+    border: none;
+    border-radius: 50px;
+    outline: none;
+    background: rgba(255, 255, 255, 0.2);
+    padding: 10px 30px;
+    text-transform: uppercase;
+    color: #fff;
+    font-weight: 500;
+    margin-top: 50px;
+    cursor: pointer;
+    transition: .5s;
+}
+
+.btn:hover{
+    background: #fff;
+    color: #000;
+}
+
+.toggle-btn{
+    width: 60px;
+    height: 60px;
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    cursor: pointer;
+    z-index: 9;
+    display: none;
+}
+
+.toggle-btn.display{
+    display: block;
+}
+
+.toggle-btn span{
+    position: absolute;
+    width: 100%;
+    height: 2px;
+    background-color: #fff;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) rotate(45deg);
+}
+
+.toggle-btn span:nth-child(2){
+    transform: translate(-50%, -50%) rotate(-45deg);
+}

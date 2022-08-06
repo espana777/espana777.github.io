@@ -1,0 +1,35 @@
+.scale-up{
+    animation: scale-up 1.5s forwards 1;
+}
+
+@keyframes scale-up{
+    0%{
+        transform: translate(-50%, -50%) scale(0.45);
+    }
+    20%{
+        transform: translate(-50%, -50%) scale(1);
+    }
+    100%{
+        left: 80%;
+        bottom: -10%;
+        transform: translate(-50%, -50%) scale(1);
+    }
+}
+
+.scale-down{
+    animation: scale-down 1.5s forwards 1;
+}
+
+@keyframes scale-down{
+    0%{
+        left: 80%;
+        bottom: -10%;
+        transform: translate(-50%, -50%) scale(1);
+    }
+    80%{
+        transform: translate(-50%, -50%) scale(1);
+    }
+    100%{        
+        transform: translate(-50%, -50%) scale(0.45);
+    }
+}
