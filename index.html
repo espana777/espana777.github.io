@@ -1,305 +1,68 @@
 <!DOCTYPE html>
-<html lang="es">
-<head>
+<!-- Designined by CodingLab | www.youtube.com/codinglabyt -->
+<html lang="en" dir="ltr">
+  <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>¿Lo sabías?</title>
-
-    <!-- font awesome cdn link  -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
-
-    <!-- custom css file link  -->
-    <link rel="stylesheet" href="css/style.css">
-
-</head>
+    <title> Responsive Drop Down Navigation Menu | CodingLab </title>
+    <link rel="stylesheet" href="style.css">
+    <!-- Boxicons CDN Link -->
+    <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   </head>
 <body>
-
-<!-- header section starts  -->
-
-<header class="header">
-
-    <a href="#" class="logo"><span>¿Lo sabías?</span></a>
-
-    <nav class="navbar">
-        <a href="#banner">banner</a>
-        <a href="#posts">my posts</a>
-        <a href="#contact">contact me</a>
-    </nav>
-
-    <div class="icons">
-        <i class="fas fa-bars" id="menu-bars"></i>
-        <i class="fas fa-search" id="search-icon"></i>
+  <nav>
+    <div class="navbar">
+      <i class='bx bx-menu'></i>
+      <div class="logo"><a href="#">CodingLab</a></div>
+      <div class="nav-links">
+        <div class="sidebar-logo">
+          <span class="logo-name">CodingLab</span>
+          <i class='bx bx-x' ></i>
+        </div>
+        <ul class="links">
+          <li><a href="#">HOME</a></li>
+          <li>
+            <a href="#">HTML & CSS</a>
+            <i class='bx bxs-chevron-down htmlcss-arrow arrow  '></i>
+            <ul class="htmlCss-sub-menu sub-menu">
+              <li><a href="#">Web Design</a></li>
+              <li><a href="#">Login Forms</a></li>
+              <li><a href="#">Card Design</a></li>
+              <li class="more">
+                <span><a href="#">More</a>
+                <i class='bx bxs-chevron-right arrow more-arrow'></i>
+              </span>
+                <ul class="more-sub-menu sub-menu">
+                  <li><a href="#">Neumorphism</a></li>
+                  <li><a href="#">Pre-loader</a></li>
+                  <li><a href="#">Glassmorphism</a></li>
+                </ul>
+              </li>
+            </ul>
+          </li>
+          <li>
+            <a href="#">JAVASCRIPT</a>
+            <i class='bx bxs-chevron-down js-arrow arrow '></i>
+            <ul class="js-sub-menu sub-menu">
+              <li><a href="#">Dynamic Clock</a></li>
+              <li><a href="#">Form Validation</a></li>
+              <li><a href="#">Card Slider</a></li>
+              <li><a href="#">Complete Website</a></li>
+            </ul>
+          </li>
+          <li><a href="#">ABOUT US</a></li>
+          <li><a href="#">CONTACT US</a></li>
+        </ul>
+      </div>
+      <div class="search-box">
+        <i class='bx bx-search'></i>
+        <div class="input-box">
+          <input type="text" placeholder="Search...">
+        </div>
+      </div>
     </div>
+  </nav>
+  <script src="script.js"></script>
 
-    <form action="" class="search-form">
-        <input type="search" name="" placeholder="Busca aquí..." id="search-box">
-        <label for="search-box" class="fas fa-search"></label>
-    </form>
-
-</header>
-
-<!-- header section ends -->
-
-<!-- banner section starts  -->
-
-<section class="banner" id="banner">
-
-    <video autoplay muted loop>
-        <source src="https://player.vimeo.com/external/434307263.sd.mp4?s=d9585077c6767b79c44b94ec2775cad8e031ae37&profile_id=164&oauth2_token_id=57447761" type="video/mp4">
-    </video>
-    <!-- <div class="content">
-        <h3>explore the nature</h3>
-        <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quisquam, laboriosam?</p>
-        <a href="#" class="btn">my blogs</a>
-    </div> -->
-
-</section>
-
-<!-- banner section ends -->
-
-<!-- posts section starts  -->
-
-<section class="container" id="posts">
-
-    <div class="posts-container">
-
-        <div class="post">
-            <!-- <img src="images/blog-1.jpg" alt="" class="image"> -->
-
-            <video autoplay muted loop>
-                <source src="
-                https://player.vimeo.com/external/566117796.sd.mp4?s=a9e48204ac1f5086008d222ebdff61f430cd08b9&profile_id=164&oauth2_token_id=57447761" type="video/mp4">
-            </video>
-
-            <div class="date">
-                <i class="far fa-clock"></i>
-                <span>1st may, 2021</span>
-            </div>
-            <h3 class="title">blog title goes here</h3>
-            <p class="text">
-                La novela (del italiano novella) es una obra literaria en la que se narra una acción fingida en todo o en parte y cuyo fin es causar placer estético a los lectores con la descripción o pintura de sucesos o lances interesantes así como de personajes, pasiones y costumbres, que en muchos casos sirven de insumos de la propia reflexión o introspección. La vigésima tercera edición del Diccionario de la lengua española de la Real Academia Española la define de manera más general como una «obra literaria narrativa de cierta extensión» y como un «género literario narrativo que, con precedente en la Antigüedad grecolatina, se desarrolla a partir de la Edad Moderna».1​ La novela se distingue por su carácter abierto y su capacidad para contener elementos diversos en un relato complejo. Este carácter abierto ofrece al autor una gran libertad para integrar personajes, introducir historias cruzadas o subordinadas unas a otras, presentar hechos en un orden distinto a aquel en el que se produjeron o incluir en el relato textos de distinta naturaleza: cartas, documentos administrativos, leyendas, poemas, etc. Todo ello da a la novela mayor complejidad que la que presentan los demás subgéneros narrativos.
-            </p>
-            <p class="text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Architecto, reiciendis fugiat quas nemo quia omnis repellat obcaecati quaerat voluptates fuga error dicta cupiditate pariatur soluta dolorum quis eum quibusdam quam?</p>
-            <div class="links">
-                <a href="#" class="user">
-                    <i class="far fa-user"></i>
-                    <span>by admin</span>
-                </a>
-                <a href="#" class="icon">
-                    <i class="far fa-comment"></i>
-                    <span>(45)</span>
-                </a>
-                <a href="#" class="icon">
-                    <i class="far fa-share-square"></i>
-                    <span>(29)</span>
-                </a>
-            </div>
-        </div>
-
-        <div class="post">
-            <!-- <img src="images/blog-2.jpg" alt="" class="image"> -->
-            <video autoplay muted loop>
-                <source src="https://player.vimeo.com/external/434411622.sd.mp4?s=6dc29e6227736e28c0dca7de0b462b9f489bf227&profile_id=164&oauth2_token_id=57447761" type="video/mp4">
-            </video>
-            <div class="date">
-                <i class="far fa-clock"></i>
-                <span>1st may, 2021</span>
-            </div>
-            <h3 class="title">blog title goes here</h3>
-            <p class="text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Earum molestias rerum numquam, quos aut est culpa quisquam excepturi sed a inventore dicta tempore consequuntur possimus magnam corporis cum doloremque quasi fugiat exercitationem aliquid cupiditate pariatur. Dolor laboriosam voluptatem ex praesentium magni error debitis maxime alias autem distinctio. Fuga, esse velit!</p>
-            <p class="text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Architecto, reiciendis fugiat quas nemo quia omnis repellat obcaecati quaerat voluptates fuga error dicta cupiditate pariatur soluta dolorum quis eum quibusdam quam?</p>
-            <div class="links">
-                <a href="#" class="user">
-                    <i class="far fa-user"></i>
-                    <span>by admin</span>
-                </a>
-                <a href="#" class="icon">
-                    <i class="far fa-comment"></i>
-                    <span>(45)</span>
-                </a>
-                <a href="#" class="icon">
-                    <i class="far fa-share-square"></i>
-                    <span>(29)</span>
-                </a>
-            </div>
-        </div>
-
-        <div class="post">
-            <!-- <img src="images/blog-3.jpg" alt="" class="image"> -->
-
-            <video autoplay muted loop>
-                <source src="https://player.vimeo.com/external/434306848.sd.mp4?s=15a4e717ddb0f77cac3e44f04b629eb4a6ec6438&profile_id=164&oauth2_token_id=57447761" type="video/mp4">
-            </video>
-            <div class="date">
-                <i class="far fa-clock"></i>
-                <span>1st may, 2021</span>
-            </div>
-            <h3 class="title">blog title goes here</h3>
-            <p class="text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Earum molestias rerum numquam, quos aut est culpa quisquam excepturi sed a inventore dicta tempore consequuntur possimus magnam corporis cum doloremque quasi fugiat exercitationem aliquid cupiditate pariatur. Dolor laboriosam voluptatem ex praesentium magni error debitis maxime alias autem distinctio. Fuga, esse velit!</p>
-            <p class="text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Architecto, reiciendis fugiat quas nemo quia omnis repellat obcaecati quaerat voluptates fuga error dicta cupiditate pariatur soluta dolorum quis eum quibusdam quam?</p>
-            <div class="links">
-                <a href="#" class="user">
-                    <i class="far fa-user"></i>
-                    <span>by admin</span>
-                </a>
-                <a href="#" class="icon">
-                    <i class="far fa-comment"></i>
-                    <span>(45)</span>
-                </a>
-                <a href="#" class="icon">
-                    <i class="far fa-share-square"></i>
-                    <span>(29)</span>
-                </a>
-            </div>
-        </div>
-
-    </div>
-
-    <div class="sidebar">
-
-        <div class="box">
-            <h3 class="title">Acerca de </h3>
-            <div class="about">
-                 <img src="https://images.pexels.com/photos/247204/pexels-photo-247204.jpeg?auto=compress&cs=tinysrgb&w=600" alt="" class="image">
-               
-                <h3>shaikh anas</h3>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Similique, officia.</p>
-                <!-- <div class="follow">
-                    <a href="#" class="fab fa-facebook-f"></a>
-                    <a href="#" class="fab fa-twitter"></a>
-                    <a href="#" class="fab fa-instagram"></a>
-                    <a href="#" class="fab fa-linkedin"></a>
-                </div> -->
-            </div>
-        </div>
-
-        <div class="box">
-            <h3 class="title">categories</h3>
-            <div class="category">
-                <a href="#"> travel <span>42</span></a>
-                <a href="#"> photography <span>75</span> </a>
-                <a href="#"> technology <span>22</span> </a>
-                <a href="#"> fashion <span>17</span> </a>
-                <a href="#"> study <span>48</span> </a>
-                <a href="#"> science <span>39</span> </a>
-                <a href="#"> music <span>59</span> </a>
-                <a href="#"> public <span>12</span> </a>
-                <a href="#"> business <span>32</span> </a>
-                <a href="#"> sports <span>18</span> </a>
-            </div>
-        </div>
-
-        <div class="box">
-            <h3 class="title">popular posts</h3>
-            <div class="p-post">
-                <a href="#">
-                    <h3>01. blog title goes here</h3>
-                    <span><i class="far fa-clock"></i>1st may, 2021</span>
-                </a>
-                <a href="#">
-                    <h3>02. blog title goes here</h3>
-                    <span><i class="far fa-clock"></i>1st may, 2021</span>
-                </a>
-                <a href="#">
-                    <h3>03. blog title goes here</h3>
-                    <span><i class="far fa-clock"></i>1st may, 2021</span>
-                </a>
-                <a href="#">
-                    <h3>04. blog title goes here</h3>
-                    <span><i class="far fa-clock"></i>1st may, 2021</span>
-                </a>
-            </div>
-        </div>
-
-        <div class="box">
-            <h3 class="title">popular tags</h3>
-            <div class="tags">
-                <a href="#">travel</a>
-                <a href="#">photo</a>
-                <a href="#">science</a>
-                <a href="#">biology</a>
-                <a href="#">aliens</a>
-                <a href="#">nature</a>
-                <a href="#">mountain</a>
-                <a href="#">river</a>
-                <a href="#">camp</a>
-                <a href="#">landscape</a>
-                <a href="#">world</a>
-            </div>
-        </div>
-
-    </div>
-
-</section>
-
-<!-- posts section ends -->
-
-<!-- contact section starts  -->
-
-<section class="contact" id="contact">
-
-    <form action="">
-        <h3>contact me</h3>
-        <div class="inputBox">
-            <input type="text" placeholder="name">
-            <input type="email" placeholder="email">
-        </div>
-        <div class="inputBox">
-            <input type="number" placeholder="number">
-            <input type="text" placeholder="subject">
-        </div>
-        <textarea name="" placeholder="message" id="" cols="30" rows="10"></textarea>
-        <input type="submit" value="send message" class="btn">
-    </form>
-
-</section>
-
-<!-- contact section ends -->
-
-<!-- footer section starts  -->
-
-<section class="footer">
-
-    <div class="follow">
-        <a href="#" class="fab fa-facebook-f"></a>
-        <a href="#" class="fab fa-twitter"></a>
-        <a href="#" class="fab fa-instagram"></a>
-        <a href="#" class="fab fa-linkedin"></a>
-    </div>
-
-    <div class="credit">created by <span>mr. web designer</span> | all rights reserved</div>
-
-</section>
-
-<!-- footer section ends -->
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<!-- custom js file link  -->
-<script src="js/script.js"></script>
-    
 </body>
 </html>
