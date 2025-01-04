@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gráfico de Pie con Etiquetas</title>
+    <link rel="stylesheet" href="menu.css">
+    <style>
+        body { margin: 0; overflow: hidden; font-family: Arial, sans-serif; background-color: #121212; }
+        canvas { display: block; }
+        h1 {
+            text-align: center;
+            position: absolute;
+            top: 30px;
+            color: white;
+            font-size: 24px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+   
+    <header>
+        <nav class="navbar">
+          <div class="logo">DATUSA</div>
+          <button class="menu-toggle" aria-label="Abrir menú">
+            &#9776;
+          </button>
+          <ul class="menu">
+            <li><a href="index.html">Inicio</a></li>
+            <li><a href="6masvistos.html">6 Más vistos</a></li>
+            <li><a href="6menosvistos.html">6 Menos vistos</a></li>
+            <li><a href="Barras.html">Playlists +</a></li>
+            <li><a href="pie.html">Playlists -</a></li>
+            <li><a href="trestablas.html">Estadísticas</a></li>
+            <li><a href="comentarios.html">Comentarios</a></li>
+            <li><a href="acercade.html">Nosotros</a></li>
+          </ul>
+        </nav>
+      </header>
+    <h1>Las 5 Playlists menos vistas</h1>
+    <script type="module">
+        import * as THREE from './three.module.js';
+        import { OrbitControls } from './orbitcontrols.js';
+
+        const scene = new THREE.Scene();
+        const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+        const renderer = new THREE.WebGLRenderer({ antialias: true });
+        renderer.setSize(window.innerWidth, window.innerHeight);
+        document.body.appendChild(renderer.domElement);
+
+        const controls = new OrbitControls(camera, renderer.domElement);
+
+        const data = [
+            { value: 1000, label: "SHORTS", color: 0xff0000 },
+            { value: 2000, label: "Transmisiones en vivo", color: 0x00ff00 },
+            { value: 3000, label: "Mochileando Ando", color: 0xff0000 },
+            { value: 4000, label: "Paseo Europa", color: 0xffff00 },
+            { value: 5000, label: "Francia no es París!", color: 0xff00ff }
+        ];
+
+        const totalValue = data.reduce((sum, item) => sum + item.value, 0);
+        const segments = data.map(item => ({
+            ...item,
+            angle: (item.value / totalValue) * Math.PI * 2
+        }));
+
+        const radius = 10;
+        const height = 2;
+        let startAngle = 0;
+
+        function createLabel(text, fontSize) {
+            const canvas = document.createElement('canvas');
+            const context = canvas.getContext('2d');
+            context.font = `bold ${fontSize}px Arial`;
+            const metrics = context.measureText(text);
+            canvas.width = metrics.width + 20;
+            canvas.height = fontSize + 10;
+            context.fillStyle = 'white';
+            context.font = `bold ${fontSize}px Arial`;
+            context.textAlign = 'center';
+            context.textBaseline = 'middle';
+            context.fillText(text, canvas.width / 2, canvas.height / 2);
+
+            const texture = new THREE.CanvasTexture(canvas);
+            const material = new THREE.SpriteMaterial({ map: texture });
+            const sprite = new THREE.Sprite(material);
+            return sprite;
+        }
+
+        segments.forEach((segment, index) => {
+            const endAngle = startAngle + segment.angle;
+
+            const shape = new THREE.Shape();
+            shape.moveTo(0, 0);
+            shape.absarc(0, 0, radius, startAngle, endAngle, false);
+            shape.lineTo(0, 0);
+
+            const geometry = new THREE.ExtrudeGeometry(shape, { depth: height, bevelEnabled: false });
+            const material = new THREE.MeshBasicMaterial({ color: segment.color });
+            const mesh = new THREE.Mesh(geometry, material);
+
+            mesh.rotation.x = -Math.PI / 2;
+            mesh.position.y = height / 2;
+            scene.add(mesh);
+
+            let labelFontSize = Math.max(12, window.innerWidth / 100);
+            let scaleFactor = Math.max(20, window.innerWidth / 50);
+
+            const label = createLabel(segment.label, labelFontSize);
+            label.scale.set(label.material.map.image.width / scaleFactor, label.material.map.image.height / scaleFactor, 1);
+
+            const labelAngle = (startAngle + endAngle) / 2;
+            const labelRadius = radius + 2;
+            const labelOffset = 0.5; // Ajusta este valor para la separación de la etiqueta
+            label.position.set(
+                Math.cos(labelAngle) * (labelRadius + labelOffset),
+                height + 1,
+                Math.sin(labelAngle) * (labelRadius + labelOffset)
+            );
+            label.rotation.z = -labelAngle + Math.PI/2; // Rotación de la etiqueta
+            scene.add(label);
+
+            startAngle = endAngle;
+        });
+
+        camera.position.set(15, 15, 15);
+        camera.lookAt(0, 0, 0);
+
+        function animate() {
+            requestAnimationFrame(animate);
+            scene.rotation.y += 0.001;
+            controls.update();
+            renderer.render(scene, camera);
+        }
+
+        animate();
+
+        window.addEventListener('resize', () => {
+            renderer.setSize(window.innerWidth, window.innerHeight);
+            camera.aspect = window.innerWidth / window.innerHeight;
+            camera.updateProjectionMatrix();
+        });
+    </script>
+        <script src="/js/menu.js"></script>
+</body>
+</html>

@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Secciones a pantalla completa con Menú</title>
+  <link rel="stylesheet" href="inicio.css">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <div class="logo">DATUSA</div>
+    <button class="menu-toggle" aria-label="Abrir menú">&#9776;</button>
+    <ul class="menu">
+      <li><a href="#inicio">Inicio</a></li>
+      <li><a href="#nosotros">Nosotros</a></li>
+      <li><a href="#section3">Sección 3</a></li>
+    </ul>
+  </header>
+
+  <section id="inicio" class="inicio">
+
+    <div class="container_inicio">
+      <div class="content_inicio">
+        <h1>Sév en Voyage</h1>
+        <img
+          src="https://yt3.googleusercontent.com/IaqZz_6cNuxoftujyKlOiHAYdb4Vx46qZuMlD-o-tXKqEdNNAwFxXIXPhBfHRiGBZzHt1dPyPA=s160-c-k-c0x00ffffff-no-rj"
+          alt="Foto de perfil de Sév en Voyage"
+          class="profile-picture"
+        />
+        <img
+          src="https://yt3.googleusercontent.com/TAWORagYAQAM5m0BefGptq3Yit7aGdMQtpEIuxSTA4YwgM3rn_kkD3PqAS9UVaGHSMwv1EyhIuw=w1138-fcrop64=1,00005a57ffffa5a8-k-c0xffffffff-no-nd-rj"
+          alt="Banner del canal de Sév en Voyage"
+          class="banner"
+        />
+      </div>
+      
+    </div>
+
+     <!-- Three.js Library -->
+     <script type="module">
+      // Configuración de Three.js
+      import * as THREE from 'three';
+      
+      const scene = new THREE.Scene();
+      const camera = new THREE.PerspectiveCamera(
+        75,
+        window.innerWidth / window.innerHeight,
+        0.1,
+        1000
+      );
+      const renderer = new THREE.WebGLRenderer();
+      renderer.setSize(window.innerWidth, window.innerHeight);
+      document.body.appendChild(renderer.domElement);
+
+      const geometry = new THREE.SphereGeometry(0.5, 32, 32);
+      const material = new THREE.MeshStandardMaterial({ color: 0x00aaff });
+      const spheres = [];
+
+      for (let i = 0; i < 50; i++) {
+        const sphere = new THREE.Mesh(geometry, material);
+        sphere.position.set(
+          (Math.random() - 0.5) * 20,
+          (Math.random() - 0.5) * 20,
+          (Math.random() - 0.5) * 20
+        );
+        spheres.push(sphere);
+        scene.add(sphere);
+      }
+
+      const light = new THREE.PointLight(0xffffff, 1, 100);
+      light.position.set(10, 10, 10);
+      scene.add(light);
+
+      camera.position.z = 5;
+
+      function animate() {
+        requestAnimationFrame(animate);
+        spheres.forEach((sphere) => {
+          sphere.rotation.x += 0.01;
+          sphere.rotation.y += 0.01;
+        });
+        renderer.render(scene, camera);
+      }
+
+      animate();
+
+      window.addEventListener("resize", () => {
+        camera.aspect = window.innerWidth / window.innerHeight;
+        camera.updateProjectionMatrix();
+        renderer.setSize(window.innerWidth, window.innerHeight);
+      });
+
+    </script>
+  </section>
+
+  <section id="nosotros" class="nosotros">
+    
+    <div class="container_nosotros">
+      <h1>Acerca de DATUSA</h1>
+      <img src="datusa.png" alt="Logo de DATUSA" />
+      <p>
+        En DATUSA, nos apasiona el mundo de YouTube y el potencial que ofrece a
+        los creadores de contenido. Entendemos que el éxito en esta plataforma
+        va más allá de simplemente subir videos; se trata de comprender a tu
+        audiencia, analizar el rendimiento y tomar decisiones estratégicas
+        basadas en datos concretos.
+      </p>
+
+      <h2>Nuestra Misión</h2>
+      <p>
+        Nuestra misión es empoderar a los YouTubers proporcionándoles las
+        herramientas y el conocimiento necesarios para optimizar sus canales y
+        alcanzar sus objetivos. Ofrecemos análisis profundos y métricas clave
+        que te permiten entender qué funciona, qué no.
+      </p>
+
+      <h2>¿Qué Hacemos?</h2>
+      <p>En DATUSA te ayudamos a:</p>
+      <ul>
+        <li>
+          <strong>Monitorear el crecimiento de tu canal:</strong> Seguimiento de
+          suscriptores, visualizaciones y otras métricas
+          esenciales.
+        </li>
+        <li>
+          <strong>Analizar el rendimiento de tus videos:</strong> Identificar
+          qué videos tienen mejor acogida, entender el comportamiento de la
+          audiencia y optimizar el contenido futuro.
+        </li>
+        <li>
+          <strong>Identificar oportunidades de mejora:</strong> Detectar áreas
+          de oportunidad para aumentar el alcance, la interacción y el
+          engagement con tu comunidad.
+        </li>
+        <li>
+          <strong>Generar informes personalizados:</strong> Recibir informes
+          claros y concisos con las métricas más relevantes para tu canal.
+        </li>
+      </ul>
+
+      <h2>Nuestro Equipo</h2>
+      <p>
+        Somos un equipo de profesionales con amplia experiencia en análisis de
+        datos de la plataforma de YouTube. Nos dedicamos a
+        mantenernos al día con las últimas tendencias y algoritmos para
+        ofrecerte el mejor servicio posible.
+      </p>
+
+      <h2>¿Por qué elegir DATUSA?</h2>
+      <p>
+        En DATUSA no solo te entregamos datos, te brindamos
+        <strong>información accionable</strong>. Te ayudamos a interpretar las
+        métricas y a convertirlas en estrategias concretas para el crecimiento
+        de tu canal. Nos enfocamos en:
+      </p>
+      <ul>
+        <li><strong>Análisis profundo y personalizado.</strong></li>
+        <li><strong>Atención al cliente excepcional.</strong></li>
+        <li><strong>Trabajamos por donativos.</strong></li>
+      </ul>
+      <p>
+        ¡Contáctanos hoy mismo y descubre cómo DATUSA puede ayudarte a llevar tu
+        canal de YouTube al siguiente nivel!
+      </p>
+      <p>Correo electrónico: datusa777@gmail.com<br /></p>
+    </div>
+  </section>
+
+
+  <section id="section3" class="section3">
+    <h1>Sección 3</h1>
+  </section>
+
+  <script>
+    const toggleButton = document.querySelector('.menu-toggle');
+    const menu = document.querySelector('.menu');
+
+    toggleButton.addEventListener('click', () => {
+      menu.classList.toggle('show');
+    });
+  </script>
+</body>
+</html>

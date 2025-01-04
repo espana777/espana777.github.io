@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Los 6 videos menos vistos del canal</title>
+    <link rel="stylesheet" href="menu.css">
+    <style>
+        body {
+            margin: 0;
+            overflow: hidden;
+            background-color: #121212;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        iframe {
+            border: none;
+        }
+
+        h1 {
+            position: absolute;
+            top: 40px;
+            color: white;
+            font-size: 24px;
+            font-weight: bold;
+            text-align: center;
+            z-index: 1; /* Asegura que el título esté encima del cubo */
+        }
+
+        .scene {
+            width: 300px;
+            height: 300px;
+            perspective: 1000px;
+        }
+
+        .cube {
+            width: 100%;
+            height: 100%;
+            position: relative;
+            transform-style: preserve-3d;
+            animation: rotateCube 20s infinite linear;
+        }
+
+        .cube-face {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background-color: #000;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .cube-face iframe {
+            width: 100%;
+            height: 100%;
+        }
+
+        .cube-face.front  { transform: rotateY(  0deg) translateZ(150px); }
+        .cube-face.back   { transform: rotateY(180deg) translateZ(150px); }
+        .cube-face.right  { transform: rotateY( 90deg) translateZ(150px); }
+        .cube-face.left   { transform: rotateY(-90deg) translateZ(150px); }
+        .cube-face.top    { transform: rotateX( 90deg) translateZ(150px); }
+        .cube-face.bottom { transform: rotateX(-90deg) translateZ(150px); }
+
+        @keyframes rotateCube {
+            0% {
+                transform: rotateX(0deg) rotateY(0deg);
+            }
+            100% {
+                transform: rotateX(360deg) rotateY(360deg);
+            }
+        }
+    </style>
+</head>
+<body>
+
+  
+    <header>
+        <nav class="navbar">
+          <div class="logo">DATUSA</div>
+          <button class="menu-toggle" aria-label="Abrir menú">
+            &#9776;
+          </button>
+          <ul class="menu">
+            <li><a href="index.html">Inicio</a></li>
+            <li><a href="6masvistos.html">6 Más vistos</a></li>
+            <li><a href="6menosvistos.html">6 Menos vistos</a></li>
+            <li><a href="Barras.html">Playlists +</a></li>
+            <li><a href="pie.html">Playlists -</a></li>
+            <li><a href="trestablas.html">Estadísticas</a></li>
+            <li><a href="comentarios.html">Comentarios</a></li>
+            <li><a href="acercade.html">Nosotros</a></li>
+          </ul>
+        </nav>
+      </header>
+      
+    <!-- Título de la página -->
+    <h1>Los 6 videos menos vistos del canal</h1>
+    
+    <div class="scene">
+        <div class="cube">
+            <div class="cube-face front">
+                <iframe src="https://www.youtube.com/embed/Ps1q3pOgeLo" allowfullscreen></iframe>
+            </div>
+            <div class="cube-face back">
+                <iframe src="https://www.youtube.com/embed/gV7nBeghGMI" allowfullscreen></iframe>
+            </div>
+            <div class="cube-face right">
+                <iframe src="https://www.youtube.com/embed/klekIdeNj9I" allowfullscreen></iframe>
+            </div>
+            <div class="cube-face left">
+                <iframe src="https://www.youtube.com/embed/B7ZokVpgflY" allowfullscreen></iframe>
+            </div>
+            <div class="cube-face top">
+                <iframe src="https://www.youtube.com/embed/Q_DhOwt118g" allowfullscreen></iframe>
+            </div>
+            <div class="cube-face bottom">
+                <iframe src="https://www.youtube.com/embed/aZHooBNY0EI" allowfullscreen></iframe>
+            </div>
+        </div>
+    </div>
+    <script src="/js/menu.js"></script>
+</body>
+</html>
