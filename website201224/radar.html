@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gráfica de Radar 3D</title>
+  <link rel="stylesheet" href="menu.css">
+  <style>
+    body {
+      margin: 0;
+      overflow: hidden;
+      font-family: Arial, sans-serif;
+    }
+    canvas {
+      display: block;
+    }
+    h1 {
+      position: absolute;
+      top: 10px;
+      left: 50%;
+      transform: translateX(-50%);
+      color: white;
+      font-size: 24px;
+      font-weight: bold;
+      margin: 0;
+      z-index: 1;
+    }
+  </style>
+</head>
+<body>
+    
+  <header>
+    <nav class="navbar">
+      <div class="logo">DATUSA</div>
+      <button class="menu-toggle" aria-label="Abrir menú">
+        &#9776;
+      </button>
+      <ul class="menu">
+        <li><a href="index.html">Inicio</a></li>
+        <li><a href="6masvistos.html">6masvistos</a></li>
+        <li><a href="Barras.html">Barras</a></li>
+        <li><a href="pie.html">Pie</a></li>
+        <li><a href="tabla.html">Tabla</a></li>
+        <li><a href="acercade.html">Nosotros</a></li>
+      </ul>
+    </nav>
+  </header>
+  <h1>Gráfica de Radar en 3D</h1>
+  <script type="module">
+    import * as THREE from './three.module.js';
+    import { OrbitControls } from './OrbitControls.js';
+
+    const scene = new THREE.Scene();
+    const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+    const renderer = new THREE.WebGLRenderer();
+    renderer.setSize(window.innerWidth, window.innerHeight);
+    document.body.appendChild(renderer.domElement);
+
+    const controls = new OrbitControls(camera, renderer.domElement);
+
+    const data = [
+      { label: "Has vivido en la Mentira", value: 1510265 },
+      { label: "Ventas Q2", value: 1424007 },
+      { label: "Ventas Q3", value: 1304890 },
+      { label: "Ventas Q4", value: 1177681 },
+      { label: "Proyección", value: 963319 }
+    ];
+
+    const maxValue = Math.max(...data.map(d => d.value));
+    const radius = 10;
+
+    const radarGroup = new THREE.Group();
+    scene.add(radarGroup);
+
+    const numLayers = 5;
+    for (let i = 1; i <= numLayers; i++) {
+      const geometry = new THREE.RingGeometry((radius * (i - 1)) / numLayers, (radius * i) / numLayers, 32);
+      const material = new THREE.MeshBasicMaterial({ color: 0x444444, side: THREE.DoubleSide, transparent: true, opacity: 0.5 });
+      const ring = new THREE.Mesh(geometry, material);
+      ring.rotation.x = Math.PI / 2;
+      ring.position.z = (i - 1) * 2;
+      radarGroup.add(ring);
+    }
+
+    const numAxes = data.length;
+    const points = [];
+    for (let i = 0; i < numAxes; i++) {
+      const angle = (i / numAxes) * Math.PI * 2;
+
+      const x = radius * Math.cos(angle);
+      const y = radius * Math.sin(angle);
+
+      const axisGeometry = new THREE.BufferGeometry().setFromPoints([
+        new THREE.Vector3(0, 0, 0),
+        new THREE.Vector3(x, y, 0)
+      ]);
+      const axisMaterial = new THREE.LineBasicMaterial({ color: 0x888888 });
+      const axisLine = new THREE.Line(axisGeometry, axisMaterial);
+      radarGroup.add(axisLine);
+
+      const valueRadius = (data[i].value / maxValue) * radius;
+      const px = valueRadius * Math.cos(angle);
+      const py = valueRadius * Math.sin(angle);
+      const pz = (valueRadius / radius) * 10;
+
+      points.push(new THREE.Vector3(px, py, pz));
+
+      const labelCanvas = document.createElement('canvas');
+      const context = labelCanvas.getContext('2d');
+      labelCanvas.width = 512;
+      labelCanvas.height = 256;
+
+      context.fillStyle = 'white';
+      context.font = '40px Arial';
+      context.textAlign = 'center';
+      context.fillText(data[i].label, labelCanvas.width / 2, labelCanvas.height / 2);
+
+      const labelTexture = new THREE.CanvasTexture(labelCanvas);
+      const labelMaterial = new THREE.SpriteMaterial({ map: labelTexture });
+      const labelSprite = new THREE.Sprite(labelMaterial);
+
+      labelSprite.scale.set(6, 3, 1);
+      labelSprite.position.set(px * 1.4, py * 1.4, pz + 2);
+      radarGroup.add(labelSprite);
+    }
+
+    points.push(points[0]);
+    const radarGeometry = new THREE.BufferGeometry().setFromPoints(points);
+    const radarMaterial = new THREE.LineBasicMaterial({ color: 0xff0000 });
+    const radarLine = new THREE.Line(radarGeometry, radarMaterial);
+    radarGroup.add(radarLine);
+
+    camera.position.set(0, 20, 30);
+    camera.lookAt(0, 0, 0);
+
+    function animate() {
+      requestAnimationFrame(animate);
+      radarGroup.rotation.y += 0.01;
+      controls.update();
+      renderer.render(scene, camera);
+    }
+
+    animate();
+
+    window.addEventListener('resize', () => {
+      renderer.setSize(window.innerWidth, window.innerHeight);
+      camera.aspect = window.innerWidth / window.innerHeight;
+      camera.updateProjectionMatrix();
+    });
+  </script>
+  <script src="/js/menu.js"></script>
+</body>
+</html>

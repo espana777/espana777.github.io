@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Métricas</title>
+    <link rel="stylesheet" href="menu.css">
+    <style>
+      body {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: Arial, sans-serif;
+        background-color: #1e1e1e;
+        color: #fff;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: flex-start;
+        min-height: 100vh;
+      }
+
+      h1,
+      h2 {
+        margin: 20px 0;
+        text-align: center;
+      }
+
+      table {
+        border-collapse: collapse;
+        width: 90%;
+        margin: 20px 0;
+        background-color: #2e2e2e;
+        border: 1px solid #444;
+      }
+
+      table th,
+      table td {
+        border: 1px solid #444;
+        text-align: center;
+        padding: 8px;
+      }
+
+      table th {
+        background-color: #444;
+      }
+
+      
+  /* Responsividad */
+  @media (max-width: 768px) {
+    table thead {
+      display: none; /* Oculta los encabezados de las tablas */
+    }
+
+    table tbody tr {
+      display: flex;
+      flex-direction: column;
+      margin-bottom: 20px;
+      border-bottom: 1px solid #444;
+    }
+
+    table td {
+      text-align: left;
+      padding: 10px;
+      display: flex;
+      justify-content: space-between;
+    }
+
+    table td:before {
+      content: attr(data-label); /* Muestra las etiquetas de cada celda */
+      font-weight: bold;
+      flex: 1;
+    }
+  }
+
+  /* Espaciado adicional para que los títulos de las tablas sean más claros */
+  section {
+    margin-bottom: 40px;
+  }
+
+    </style>
+  </head>
+  <body>
+
+    
+  
+    <header>
+      <nav class="navbar">
+        <div class="logo">DATUSA</div>
+        <button class="menu-toggle" aria-label="Abrir menú">
+          &#9776;
+        </button>
+        <ul class="menu">
+          <li><a href="index.html">Inicio</a></li>
+          <li><a href="6masvistos.html">6 Más vistos</a></li>
+          <li><a href="6menosvistos.html">6 Menos vistos</a></li>
+          <li><a href="Barras.html">Playlists +</a></li>
+          <li><a href="pie.html">Playlists -</a></li>
+          <li><a href="trestablas.html">Estadísticas</a></li>
+          <li><a href="comentarios.html">Comentarios</a></li>
+          <li><a href="acercade.html">Nosotros</a></li>
+        </ul>
+      </nav>
+    </header>
+    <h1>Métricas</h1>
+
+    <section>
+      <h2>Tabla 1: Videos más vistos</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>Video</th>
+            <th>Vistas</th>
+            <th>Me gusta</th>
+            <th>Comentarios</th>
+            <th>Vistas</th>
+            <th>Me gusta</th>
+            <th>Comentarios</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>
+              Lorem ipsum dolor sit amet, consectetur adipisicing elit. Corporis
+              accusantium itaque quasi incidunt voluptatem officia ea. Ratione
+              natus reiciendis dolorem!
+            </td>
+            <td>1,500,000</td>
+            <td>65,000</td>
+            <td>5,700</td>
+            <td>1,500,000</td>
+            <td>65,000</td>
+            <td>5,700</td>
+          </tr>
+          <tr>
+            <td>Video 1</td>
+            <td>1,500,000</td>
+            <td>65,000</td>
+            <td>5,700</td>
+            <td>1,500,000</td>
+            <td>65,000</td>
+            <td>5,700</td>
+          </tr>
+          <tr>
+            <td>Video 1</td>
+            <td>1,500,000</td>
+            <td>65,000</td>
+            <td>5,700</td>
+            <td>1,500,000</td>
+            <td>65,000</td>
+            <td>5,700</td>
+          </tr>
+          <tr>
+            <td>Video 1</td>
+            <td>1,500,000</td>
+            <td>65,000</td>
+            <td>5,700</td>
+            <td>1,500,000</td>
+            <td>65,000</td>
+            <td>5,700</td>
+          </tr>
+          <tr>
+            <td>Video 1</td>
+            <td>1,500,000</td>
+            <td>65,000</td>
+            <td>5,700</td>
+            <td>1,500,000</td>
+            <td>65,000</td>
+            <td>5,700</td>
+          </tr>
+          <!-- Más filas aquí -->
+        </tbody>
+      </table>
+    </section>
+
+    <section>
+      <h2>Tabla 2: Videos con más interacción</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>Video</th>
+            <th>% Interacción</th>
+            <th>Comentarios por vista</th>
+            <th>Me gusta por vista</th>
+            <th>% Interacción</th>
+            <th>Comentarios por vista</th>
+            <th>Me gusta por vista</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>
+              Lorem, ipsum dolor sit amet consectetur adipisicing elit. Mollitia
+              incidunt quam illo unde necessitatibus maxime exercitationem
+              maiores et dolorum ipsam.
+            </td>
+            <td>10%</td>
+            <td>0.5%</td>
+            <td>4.5%</td>
+            <td>10%</td>
+            <td>0.5%</td>
+            <td>4.5%</td>
+          </tr>
+          <tr>
+            <td>
+              Lorem, ipsum dolor sit amet consectetur adipisicing elit. Mollitia
+              incidunt quam illo unde necessitatibus maxime exercitationem
+              maiores et dolorum ipsam.
+            </td>
+            <td>10%</td>
+            <td>0.5%</td>
+            <td>4.5%</td>
+            <td>10%</td>
+            <td>0.5%</td>
+            <td>4.5%</td>
+          </tr>
+          <tr>
+            <td>
+              Lorem, ipsum dolor sit amet consectetur adipisicing elit. Mollitia
+              incidunt quam illo unde necessitatibus maxime exercitationem
+              maiores et dolorum ipsam.
+            </td>
+            <td>10%</td>
+            <td>0.5%</td>
+            <td>4.5%</td>
+            <td>10%</td>
+            <td>0.5%</td>
+            <td>4.5%</td>
+          </tr>
+          <tr>
+            <td>
+              Lorem, ipsum dolor sit amet consectetur adipisicing elit. Mollitia
+              incidunt quam illo unde necessitatibus maxime exercitationem
+              maiores et dolorum ipsam.
+            </td>
+            <td>10%</td>
+            <td>0.5%</td>
+            <td>4.5%</td>
+            <td>10%</td>
+            <td>0.5%</td>
+            <td>4.5%</td>
+          </tr>
+          <tr>
+            <td>
+              Lorem, ipsum dolor sit amet consectetur adipisicing elit. Mollitia
+              incidunt quam illo unde necessitatibus maxime exercitationem
+              maiores et dolorum ipsam.
+            </td>
+            <td>10%</td>
+            <td>0.5%</td>
+            <td>4.5%</td>
+            <td>10%</td>
+            <td>0.5%</td>
+            <td>4.5%</td>
+          </tr>
+          <!-- Más filas aquí -->
+        </tbody>
+      </table>
+    </section>
+
+    <section>
+      <h2>Tabla 3: Videos más comentados</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>Video</th>
+            <th>Comentarios</th>
+            <th>Vistas</th>
+            <th>Me gusta</th>
+            <th>Comentarios</th>
+            <th>Vistas</th>
+            <th>Me gusta</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Odio ad
+              dolorem impedit eius ab facere optio enim quae nam numquam.
+            </td>
+            <td>10,000</td>
+            <td>2,000,000</td>
+            <td>70,000</td>
+            <td>10,000</td>
+            <td>2,000,000</td>
+            <td>70,000</td>
+          </tr>
+          <tr>
+            <td>
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Odio ad
+              dolorem impedit eius ab facere optio enim quae nam numquam.
+            </td>
+            <td>10,000</td>
+            <td>2,000,000</td>
+            <td>70,000</td>
+            <td>10,000</td>
+            <td>2,000,000</td>
+            <td>70,000</td>
+          </tr>
+          <tr>
+            <td>
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Odio ad
+              dolorem impedit eius ab facere optio enim quae nam numquam.
+            </td>
+            <td>10,000</td>
+            <td>2,000,000</td>
+            <td>70,000</td>
+            <td>10,000</td>
+            <td>2,000,000</td>
+            <td>70,000</td>
+          </tr>
+          <tr>
+            <td>
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Odio ad
+              dolorem impedit eius ab facere optio enim quae nam numquam.
+            </td>
+            <td>10,000</td>
+            <td>2,000,000</td>
+            <td>70,000</td>
+            <td>10,000</td>
+            <td>2,000,000</td>
+            <td>70,000</td>
+          </tr>
+          <tr>
+            <td>
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Odio ad
+              dolorem impedit eius ab facere optio enim quae nam numquam.
+            </td>
+            <td>10,000</td>
+            <td>2,000,000</td>
+            <td>70,000</td>
+            <td>10,000</td>
+            <td>2,000,000</td>
+            <td>70,000</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+    <script src="/js/menu.js"></script>
+  </body>
+</html>

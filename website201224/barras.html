@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gráfica 3D con Etiquetas Largas Responsive</title>
+    <link rel="stylesheet" href="menu.css">
+    <style>
+        body { margin: 0; overflow: hidden; font-family: Arial, sans-serif; }
+        canvas { display: block; }
+        h1 {
+            text-align: center;
+            position: absolute;
+            top: 30px;
+            color: white;
+            font-size: 24px;
+            font-weight: bold;
+        }
+        #tooltip {
+            position: absolute;
+            background-color: rgba(0, 0, 0, 0.7);
+            color: white;
+            padding: 5px;
+            border-radius: 5px;
+            pointer-events: none;
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+        
+    </style>
+</head>
+<body>
+    
+   
+    <header>
+        <nav class="navbar">
+          <div class="logo">DATUSA</div>
+          <button class="menu-toggle" aria-label="Abrir menú">
+            &#9776;
+          </button>
+          <ul class="menu">
+            <li><a href="index.html">Inicio</a></li>
+            <li><a href="6masvistos.html">6 Más vistos</a></li>
+            <li><a href="6menosvistos.html">6 Menos vistos</a></li>
+            <li><a href="Barras.html">Playlists +</a></li>
+            <li><a href="pie.html">Playlists -</a></li>
+            <li><a href="trestablas.html">Estadísticas</a></li>
+            <li><a href="comentarios.html">Comentarios</a></li>
+            <li><a href="acercade.html">Nosotros</a></li>
+          </ul>
+        </nav>
+      </header>
+    <h1>Las 5 Playlists más vistas</h1>
+    <div id="tooltip"></div>
+    <script type="module">
+        import * as THREE from './three.module.js';
+        import { OrbitControls } from './OrbitControls.js';
+
+        const scene = new THREE.Scene();
+        const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+        const renderer = new THREE.WebGLRenderer({ antialias: true });
+        renderer.setSize(window.innerWidth, window.innerHeight);
+        document.body.appendChild(renderer.domElement);
+        const tooltip = document.getElementById('tooltip');
+        const controls = new OrbitControls(camera, renderer.domElement);
+        const raycaster = new THREE.Raycaster();
+        const mouse = new THREE.Vector2();
+
+        const graphGroup = new THREE.Group();
+        scene.add(graphGroup);
+
+        const rawData = [
+            { value: 17977256, label: "¡Comidas!", color: 0xff0000 },
+            { value: 9227378, label: "México en Francia", color: 0x00ff00 },
+            { value: 8285885, label: "Esto sólo lo verás en México!", color: 0x0000ff },
+            { value: 5781814, label: "Historia y cultura de Francia", color: 0xffff00 },
+            { value: 5015085, label: "Francia en México", color: 0xff00ff }
+        ];
+
+        const maxValue = Math.max(...rawData.map(d => d.value));
+        const scaleFactor = 10 / maxValue;
+        const normalizedData = rawData.map(d => ({ ...d, scaledValue: d.value * scaleFactor }));
+
+        let barWidth = 5; // Inicializar barWidth como variable let
+        const barSpacing = 1;
+
+        function createLabel(text, fontSize) {
+            const canvas = document.createElement('canvas');
+            const context = canvas.getContext('2d');
+            context.font = `bold ${fontSize}px Arial`;
+            const metrics = context.measureText(text);
+            canvas.width = metrics.width + 20;
+            canvas.height = fontSize + 10;
+            context.fillStyle = 'white';
+            context.font = `bold ${fontSize}px Arial`;
+            context.textAlign = 'center';
+            context.textBaseline = 'middle';
+            context.fillText(text, canvas.width / 2, canvas.height / 2);
+
+            const texture = new THREE.CanvasTexture(canvas);
+            const material = new THREE.SpriteMaterial({ map: texture });
+            const sprite = new THREE.Sprite(material);
+            return sprite;
+        }
+
+        function createBars() {
+            graphGroup.children = []; // Limpiar las barras anteriores
+            normalizedData.forEach((item, index) => {
+                const geometry = new THREE.BoxGeometry(barWidth, item.scaledValue, barWidth);
+                const material = new THREE.MeshBasicMaterial({ color: item.color });
+                const bar = new THREE.Mesh(geometry, material);
+                bar.position.x = index * (barWidth + barSpacing);
+                bar.position.y = item.scaledValue / 2;
+                bar.userData = { label: item.label, value: item.value };
+                graphGroup.add(bar);
+
+                const valueLabel = createLabel(item.value.toString(), 24);
+                valueLabel.position.set(bar.position.x, item.scaledValue + 1, bar.position.z);
+                graphGroup.add(valueLabel);
+
+                const conceptLabel = createLabel(item.label, 16);
+                conceptLabel.position.set(bar.position.x, -2, bar.position.z);
+                graphGroup.add(conceptLabel);
+            });
+            const gridHelper = new THREE.GridHelper(50, 10, 0x444444, 0x888888);
+            gridHelper.rotation.x = Math.PI / 2;
+            graphGroup.add(gridHelper);
+
+            const axesHelper = new THREE.AxesHelper(25);
+            graphGroup.add(axesHelper);
+
+        }
+
+        function updateCamera() {
+            const aspectRatio = window.innerWidth / window.innerHeight;
+            camera.aspect = aspectRatio;
+            camera.updateProjectionMatrix();
+
+            if (aspectRatio > 1) {
+                camera.position.set(15, 15, 30);
+                camera.lookAt(5, 0, 0);
+            } else {
+                camera.position.set(25, 20, 15);
+                camera.lookAt(5, 5, 0);
+            }
+        }
+
+        updateCamera();
+
+        function animate() {
+            requestAnimationFrame(animate);
+            controls.update();
+            renderer.render(scene, camera);
+        }
+
+        animate();
+
+        window.addEventListener('resize', () => {
+            renderer.setSize(window.innerWidth, window.innerHeight);
+            updateCamera();
+            adjustLabelsAndSpacing();
+        });
+
+        function onMouseMove(event) {
+            mouse.x = (event.clientX / window.innerWidth) * 2 - 1;
+            mouse.y = -(event.clientY / window.innerHeight) * 2 + 1;
+
+            raycaster.setFromCamera(mouse, camera);
+
+            const intersects = raycaster.intersectObjects(graphGroup.children);
+
+            if (intersects.length > 0) {
+                const intersectedObject = intersects[0].object;
+                if (intersectedObject.userData && intersectedObject.userData.label) {
+                    tooltip.style.opacity = 1;
+                    tooltip.style.left = event.clientX + 10 + 'px';
+                    tooltip.style.top = event.clientY + 10 + 'px';
+                    tooltip.textContent = intersectedObject.userData.label + ": " + intersectedObject.userData.value;
+                } else {
+                    tooltip.style.opacity = 0;
+                }
+            } else {
+                tooltip.style.opacity = 0;
+            }
+        }
+
+        window.addEventListener('mousemove', onMouseMove);
+
+        function adjustLabelsAndSpacing() {
+            const numBars = normalizedData.length;
+            const availableWidth = window.innerWidth * 0.8;
+            let maxBarWidth = availableWidth / (numBars * 2);
+
+            if (barWidth > maxBarWidth){
+              barWidth = maxBarWidth;
+            }
+            createBars(); //Recrea las barras con el nuevo barWidth.
+
+            graphGroup.children.forEach(child => {
+                if (child instanceof THREE.Sprite) {
+                    const originalWidth = child.material.map.image.width;
+                    const originalHeight = child.material.map.image.height;
+                    let scaleFactor = Math.min(maxBarWidth / originalWidth, 0.5);
+                    child.scale.set(originalWidth / 50*scaleFactor, originalHeight / 50*scaleFactor, 1);
+                }
+            });
+        }
+
+        window.addEventListener('resize', adjustLabelsAndSpacing);
+        adjustLabelsAndSpacing();
+    </script>
+      <script src="/js/menu.js"></script>
+</body>
+</html>

@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Comentarios y Correos</title>
+  <link rel="stylesheet" href="menu.css">
+  <link rel="stylesheet" href="https://cdn.datatables.net/1.13.1/css/jquery.dataTables.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <style>
+    body {
+      font-family: 'Arial', sans-serif;
+      margin: 0;
+      padding: 20px;
+      background: linear-gradient(to right, #4facfe, #00f2fe);
+    }
+    h1 {
+      text-align: center;
+      color: white;
+      font-size: 2.5em;
+      margin-bottom: 20px;
+    }
+    .dataTables_wrapper {
+      background: white;
+      border-radius: 10px;
+      padding: 20px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+    table.dataTable thead th {
+      background: #00aaff;
+      color: white;
+      text-align: center;
+      font-weight: bold;
+    }
+    table.dataTable tbody tr {
+      text-align: center;
+      color: #555;
+    }
+    table.dataTable tbody tr:hover {
+      background: rgba(0, 170, 255, 0.1);
+    }
+    table.dataTable tbody tr td {
+      padding: 10px;
+    }
+    .dataTables_length label,
+    .dataTables_filter label {
+      color: #333;
+      font-size: 1.1em;
+    }
+    .dataTables_paginate span a {
+      background: #00aaff;
+      color: white !important;
+      border-radius: 5px;
+      padding: 5px 10px;
+      margin: 0 2px;
+    }
+    .dataTables_paginate span a:hover {
+      background: #007acc;
+    }
+    .dataTables_info {
+      font-size: 1em;
+      color: #333;
+    }
+  </style>
+</head>
+<body>
+   
+  
+  <header>
+    <nav class="navbar">
+      <div class="logo">DATUSA</div>
+      <button class="menu-toggle" aria-label="Abrir menú">
+        &#9776;
+      </button>
+      <ul class="menu">
+        <li><a href="index.html">Inicio</a></li>
+        <li><a href="6masvistos.html">6 Más vistos</a></li>
+        <li><a href="6menosvistos.html">6 Menos vistos</a></li>
+        <li><a href="Barras.html">Playlists +</a></li>
+        <li><a href="pie.html">Playlists -</a></li>
+        <li><a href="trestablas.html">Estadísticas</a></li>
+        <li><a href="comentarios.html">Comentarios</a></li>
+        <li><a href="acercade.html">Nosotros</a></li>
+      </ul>
+    </nav>
+  </header>
+  <h1>Lista de Comentarios y Correos</h1>
+  <div class="table-container">
+    <table id="dataTable" class="display">
+      <thead>
+        <tr>
+          <th>Nombre</th>
+          <th>Correo</th>
+          <th>Comentario</th>
+          <th>Fecha</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Juan Pérez</td>
+          <td>juan.perez@example.com</td>
+          <td>¡Excelente video! Me encantó.</td>
+          <td>2024-12-20</td>
+        </tr>
+        <tr>
+          <td>María López</td>
+          <td>maria.lopez@example.com</td>
+          <td>¿Cuándo subes otro video?</td>
+          <td>2024-12-19</td>
+        </tr>
+        <tr>
+          <td>Carlos Martínez</td>
+          <td>carlos.martinez@example.com</td>
+          <td>Interesante, aprendí mucho.</td>
+          <td>2024-12-18</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="https://cdn.datatables.net/1.13.1/js/jquery.dataTables.min.js"></script>
+  <script>
+    $(document).ready(function () {
+      $('#dataTable').DataTable({
+        paging: true,
+        searching: true,
+        order: [[3, 'desc']],
+        language: {
+          search: "Buscar:",
+          lengthMenu: "Mostrar _MENU_ entradas",
+          info: "Mostrando _START_ a _END_ de _TOTAL_ entradas",
+          infoEmpty: "Sin entradas disponibles",
+          zeroRecords: "No se encontraron resultados",
+          paginate: {
+            first: "Primero",
+            last: "Último",
+            next: "Siguiente",
+            previous: "Anterior"
+          }
+        }
+      });
+    });
+  </script>
+  <script src="/js/menu.js"></script>
+</body>
+</html>
