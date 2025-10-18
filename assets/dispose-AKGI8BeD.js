@@ -1,1 +1,0 @@
-function r(i,t){if(i){for(i.traverse(e=>{e.geometry&&e.geometry.dispose(),e.material&&(Array.isArray(e.material)?e.material.forEach(a=>a.dispose()):e.material.dispose()),e.texture&&e.texture.dispose()});i.children.length>0;)i.remove(i.children[0]);t&&(t.dispose(),t.forceContextLoss(),t.domElement=null),console.log("✅ Escena liberada correctamente")}}export{r as d};
